@@ -52,6 +52,7 @@ namespace Плотность
             {
                 return "ОШИБКА";
             }
+
             for (i = denss.Length - 1; i >= 0; i--)
             {
                 if (dbdens20 >= denss[i])

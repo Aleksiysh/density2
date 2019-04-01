@@ -36,6 +36,8 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -59,7 +61,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 122);
+            this.label3.Location = new System.Drawing.Point(30, 147);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 13);
             this.label3.TabIndex = 2;
@@ -73,6 +75,7 @@
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "0,6500";
             this.textBox1.TextChanged += new System.EventHandler(this.button1_Click);
+            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
             // 
             // textBox2
             // 
@@ -84,7 +87,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(184, 118);
+            this.textBox3.Location = new System.Drawing.Point(184, 143);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 4;
@@ -109,6 +112,22 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "( От 0,6500 до 1,0 )";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(30, 121);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(128, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Расчетная температура";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(184, 117);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 4;
+            // 
             // Form1
             // 
             this.AcceptButton = this.button1;
@@ -116,8 +135,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 210);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -142,6 +163,8 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
 
