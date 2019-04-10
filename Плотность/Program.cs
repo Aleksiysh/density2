@@ -25,7 +25,7 @@ namespace Плотность
 
         //таблица средних температурных поправок плотности нефтепродуктов
         //Key Плотность при 20 Гр.С     Value температурная поправка
-        static Dictionary<double, double> dict = new Dictionary<double, double> {
+        private static readonly Dictionary<double, double> dict = new Dictionary<double, double> {
                 {    0.65 ,    0.000962  },
                 {    0.66 ,    0.000949  },
                 {    0.67 ,    0.000936  },
