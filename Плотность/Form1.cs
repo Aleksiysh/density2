@@ -24,6 +24,9 @@ namespace Плотность
 
             textBox3.Text = Program.CalcDispense(textBox1.Text, textBox2.Text);
             label3.Text = "Плотность при " + textBox4.Text + " Гр.С.";
+
+            //label6.Text =Program.CalcDispense.dict 
+
         }
 
         private void textBox1_Enter(object sender, EventArgs e)

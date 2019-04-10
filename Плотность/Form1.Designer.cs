@@ -74,8 +74,6 @@
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "0,6500";
-            this.textBox1.TextChanged += new System.EventHandler(this.button1_Click);
-            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
             // 
             // textBox2
             // 
