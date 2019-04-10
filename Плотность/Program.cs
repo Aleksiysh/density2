@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Плотность
@@ -17,19 +15,15 @@ namespace Плотность
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-
-
         }
 
-        static double ToDouble(String str)
+        public static double ToDouble(String str)
         {
             str = str.Replace(".", ",");
             return Convert.ToDouble(str); ;
         }
 
-        public static string CalcDispense(string dens20, string t)
-        {
-            Dictionary<double, double> dict = new Dictionary<double, double> {
+        static Dictionary<double, double> dict = new Dictionary<double, double> {
                 {    0.65 ,    0.000962  },
                 {    0.66 ,    0.000949  },
                 {    0.67 ,    0.000936  },
@@ -67,26 +61,31 @@ namespace Плотность
                 {    0.99 ,    0.000515  }
             };
 
-            var dbdens20 = ToDouble(dens20);
-            var dbt = ToDouble(t);
-
+        public static double CalcDispense(double dbdens20, double dbt)
+        {
             foreach (var item in dict)
             {
                 if (dbdens20 >= item.Key && dbdens20 < item.Key + 0.01)
                 {
-                    return Convert.ToString(dbdens20 + (item.Value * (20 - dbt)));
+                    return (dbdens20 + (item.Value * (20 - dbt)));
                 }
             };
 
-            return "ОШИБКА";
+            return 0;
         }
 
-
-        
-        static void foo()
+        public static double CalcDispenseVar(double t1, double t2, double disp)
         {
-           
+            foreach (var item in dict)
+            {
+                var d20 = (t1 - 20) * item.Value + disp;
+                if (d20 >= item.Key && d20 < item.Key + 0.01)
+                {
+                    Console.WriteLine("d20=" + item.Key + "\tvalue=" + item.Value);
+                    return (disp + (item.Value * (t1 - t2)));
+                }
+            }
+            return 0;
         }
     }
-    
 }

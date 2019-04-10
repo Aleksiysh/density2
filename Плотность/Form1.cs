@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Плотность
@@ -17,21 +10,13 @@ namespace Плотность
             InitializeComponent();
         }
 
-        
-
         private void button1_Click(object sender, EventArgs e)
         {
-
-            textBox3.Text = Program.CalcDispense(textBox1.Text, textBox2.Text);
-            label3.Text = "Плотность при " + textBox4.Text + " Гр.С.";
-
-            //label6.Text =Program.CalcDispense.dict 
-
-        }
-
-        private void textBox1_Enter(object sender, EventArgs e)
-        {
-            label1.Text = "Плотность при " + textBox2.Text + " Гр.С.";
+            textBoxDisp.Text = Convert.ToString(Program.CalcDispenseVar(    Program.ToDouble(textBoxt1.Text),
+                                                                            Program.ToDouble(textBoxt2.Text),
+                                                                            Program.ToDouble(textBoxDisp1.Text)));
+            label3.Text = "Плотность при " + textBoxt2.Text + " Гр.С.";
+            label1.Text = "Плотность при " + textBoxt1.Text + " Гр.С.";
         }
     }
 }
