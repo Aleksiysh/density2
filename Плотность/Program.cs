@@ -23,6 +23,8 @@ namespace Плотность
             return Convert.ToDouble(str); ;
         }
 
+        //таблица средних температурных поправок плотности нефтепродуктов
+        //Key Плотность при 20 Гр.С     Value температурная поправка
         static Dictionary<double, double> dict = new Dictionary<double, double> {
                 {    0.65 ,    0.000962  },
                 {    0.66 ,    0.000949  },
@@ -61,19 +63,11 @@ namespace Плотность
                 {    0.99 ,    0.000515  }
             };
 
-        public static double CalcDispense(double dbdens20, double dbt)
-        {
-            foreach (var item in dict)
-            {
-                if (dbdens20 >= item.Key && dbdens20 < item.Key + 0.01)
-                {
-                    return (dbdens20 + (item.Value * (20 - dbt)));
-                }
-            };
-
-            return 0;
-        }
-
+        
+        // t1 температура фактическая
+        // t2 температура расчетная
+        // disp плотность при температуре t1
+        // возвращает плотность при температуре t2
         public static double CalcDispenseVar(double t1, double t2, double disp)
         {
             foreach (var item in dict)
@@ -81,7 +75,6 @@ namespace Плотность
                 var d20 = (t1 - 20) * item.Value + disp;
                 if (d20 >= item.Key && d20 < item.Key + 0.01)
                 {
-                    Console.WriteLine("d20=" + item.Key + "\tvalue=" + item.Value);
                     return (disp + (item.Value * (t1 - t2)));
                 }
             }
