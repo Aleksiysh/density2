@@ -18,7 +18,7 @@ namespace Плотность
             Application.Run(new Form1());
         }
 
-        private static  string ReplaceSeparator(string value)
+        static  string ReplaceSeparator(string value)
         {
             string dec_sep = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
             return value.Replace(",", dec_sep).Replace(".", dec_sep);
@@ -26,13 +26,14 @@ namespace Плотность
 
         public static double ToDouble(String str)
         {
-            str = ReplaceSeparator(str);
-            return Convert.ToDouble(str); ;
+            if (double.TryParse(ReplaceSeparator(str), out double result))
+                return result;
+            else return 0;
         }
 
         //таблица средних температурных поправок плотности нефтепродуктов
         //Key Плотность при 20 Гр.С     Value температурная поправка
-        private static readonly Dictionary<double, double> dict = new Dictionary<double, double> {
+        static readonly Dictionary<double, double> dict = new Dictionary<double, double> {
                 {    0.65 ,    0.000962  },
                 {    0.66 ,    0.000949  },
                 {    0.67 ,    0.000936  },
