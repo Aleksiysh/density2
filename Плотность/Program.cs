@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Плотность
@@ -17,9 +18,15 @@ namespace Плотность
             Application.Run(new Form1());
         }
 
+        private static  string ReplaceSeparator(string value)
+        {
+            string dec_sep = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+            return value.Replace(",", dec_sep).Replace(".", dec_sep);
+        }
+
         public static double ToDouble(String str)
         {
-            str = str.Replace(".", ",");
+            str = ReplaceSeparator(str);
             return Convert.ToDouble(str); ;
         }
 
@@ -70,12 +77,13 @@ namespace Плотность
         // возвращает плотность при температуре t2
         public static double CalcDispenseVar(double t1, double t2, double disp)
         {
+            disp = disp / 1000;
             foreach (var item in dict)
             {
                 var d20 = (t1 - 20) * item.Value + disp;
                 if (d20 >= item.Key && d20 < item.Key + 0.01)
                 {
-                    return (disp + (item.Value * (t1 - t2)));
+                    return (disp + (item.Value * (t1 - t2)))*1000;
                 }
             }
             return 0;
